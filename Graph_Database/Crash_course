@@ -1,0 +1,15 @@
+Graph Database:
+
+When data has lot of relationships, graph databases comes to picture and twitter is great example of it ( tweet and its likes, subscribers etc).
+we can use sql but it will be very cubersome
+
+In graph database, things is stored inside of Nodes  -- its can be anything an fooditem or a laptop or a person, we can store any multiple things on nodes 
+and we have a relationship between them ( like person A liked tweet of person B)
+Well, how we know some node belongs to someone/something, we keep properties for each node ( like node a will have name:<> Weight:<> etc) 
+thats how we store data for specific node and we can distinguish each node with a label
+and we can have properties for the relationship too
+
+Database where we store our nodes and the relationships
+Just like postgres uses mysql , neo40j(Graph Databases) uses Cypher
+
+In neo4j we can store two diffrent type of things --> Node ( we can think as an entity like nba team, coach etc) then we have relationships b/w nodes
