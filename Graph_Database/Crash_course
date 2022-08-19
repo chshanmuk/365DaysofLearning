@@ -13,3 +13,66 @@ Database where we store our nodes and the relationships
 Just like postgres uses mysql , neo40j(Graph Databases) uses Cypher
 
 In neo4j we can store two diffrent type of things --> Node ( we can think as an entity like nba team, coach etc) then we have relationships b/w nodes
+
+Graph Database user Cypher Query langage to query the data (nodes and Relationships), to query something we need to specify what we need to query fir something
+MATCH -- it is keyword that we utilize to query the things
+()  -- in Cypher, node is represntaed as two parenthesis and we can mention the varaible name (<node>) like n
+Once matches were found to return, we can use RETURN n
+
+MATCH (n) RETURN n   --Return all the nodes and thier relationships
+
+for filtering the query, as we know all the nodes will have label and properties, so query only required labels, we can use
+
+MATCH (player:PLAYER) RETURN player  -- syntax as MATCH (<var>:<LABEL>) RETURN <var>
+A node will have a label and bunch of diffrent properties
+
+instead of all details, if we want to fetch only the properties of the label we can use method
+MATCH (<val>:<LABEL>) RETURN <var>.<method>  -- we will get resultant in table format instead of nodes as we get properties of the element too.
+Same as SQL we can change the column headers values using "AS" Keyword when deriving from the methods
+
+
+Filtering the Data:
+-------------------
+We can do that using with 
+
+MATCH (<var>:<LABEL>) WHERE <var>.name = <val> RETURN <var>
+or else
+We can do like MATCH (<var>:<LABEL> {<property>="<value>"}) RETURN <var>
+
+for multiple conditions we can user AND/OR operator
+
+MATCH (<var>:<LABEL>)
+WHERE <var>.<property> condition AND <var>.<property> condition
+RETURN <var>
+
+We can NOT the conditions mentioned
+
+MATCH (<var>:<LABEL>)
+WHERE NOT <var>.<property> condition AND <var>.<property> condition
+RETURN <var>
+
+and we can limit the number of records using LIMIT keyword as in sql and we can use SKIP <> records 
+
+MATCH (<var>:<LABEL>)
+WHERE NOT <var>.<property> condition AND <var>.<property> condition
+RETURN <var>
+SKIP 2           -- skips first
+LIMIT 2         == limit to 2
+
+Order by
+-----
+
+MATCH (<var>:<LABEL>)
+WHERE NOT <var>.<property> condition AND <var>.<property> condition
+RETURN <var>
+ORDER BY <var>.method -- default is ASC we can specify for DESC
+
+
+MULTIPLE NODES:
+---------------
+
+We can call muplitplenodes by mentioning the specific nodes
+
+MATCH (<var1>:<LABEL>), (<var2>:<LABEL>) WHERE <var1>.<method> condition RETURN var1,var2
+but using this will create cartesian product product of all the nodes, so better use relationship to specify
+
