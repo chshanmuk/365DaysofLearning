@@ -76,3 +76,15 @@ We can call muplitplenodes by mentioning the specific nodes
 MATCH (<var1>:<LABEL>), (<var2>:<LABEL>) WHERE <var1>.<method> condition RETURN var1,var2
 but using this will create cartesian product product of all the nodes, so better use relationship to specify
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Query for Relations:
+
+For relations we need to specify the relation between two nodes, and we can by using (node1) -[:relation] -> (node2)
+Ex: MATCH (player:PLAYER) -[:PLAYS_FOR]-> (team:TEAM) WHERE team.name = "LA Lakers" RETURN player , team
+returns player and team which player plays for which team
+
+Nodes can have properties, relationships can also have properties, so to further query based on the relationships we can define an variable for the relationship and we can query on that
+
+MATCH (<var1>:<LABEL>) -[<var2>:<LABEL>]->(<var3>:<LABEL>) WHER <conditions> RETURN var1,var2
+MATCH (player:PLAYER) -[contract:PLAYS_FOR]-> (team:TEAM) WHERE (team.name = "LA Lakers" OR team.name="Dallas Mavericks") AND contract.salary>=50000000 RETURN player , team
+
